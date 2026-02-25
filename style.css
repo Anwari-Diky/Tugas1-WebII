@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        sans-serif;
+    background: #f5f7fb;
+    min-height: 100vh;
+    padding: 24px;
+    color: #2c3e50;
+}
+
+.container {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #edf2f7;
+}
+
+h1 {
+    color: #1a202c;
+    margin-bottom: 24px;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 16px;
+}
+
+#total {
+    background: #1a202c;
+    color: #ffffff;
+    padding: 18px 20px;
+    border-radius: 16px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #2d3748;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+button {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+    color: #4a5568;
+    letter-spacing: 0.01em;
+}
+
+button:hover {
+    background-color: #f8fafd;
+    border-color: #cbd5e0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+button:active {
+    transform: translateY(0);
+    background-color: #edf2f7;
+}
+
+#loadBtn {
+    background-color: #f8fafd;
+    border-color: #cbd5e0;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+#loadBtn:hover {
+    background-color: #edf2f7;
+    border-color: #a0aec0;
+}
+
+#filterPaid {
+    color: #047857;
+    border-color: #d1fae5;
+    background-color: #f0fdf4;
+}
+
+#filterPaid:hover {
+    background-color: #dcfce7;
+    border-color: #6ee7b7;
+}
+
+#filterUnpaid {
+    color: #b45309;
+    border-color: #fed7aa;
+    background-color: #fffbeb;
+}
+
+#filterUnpaid:hover {
+    background-color: #fef3c7;
+    border-color: #fbbf24;
+}
+
+#list {
+    list-style: none;
+    margin-top: 8px;
+}
+
+#list li {
+    background-color: #ffffff;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    border-radius: 14px;
+    border: 1px solid #edf2f7;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #2d3748;
+}
+
+#list li:hover {
+    background-color: #fafbfc;
+    border-color: #cbd5e0;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+/* Warna status menggunakan dot indicator */
+#list li::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 14px;
+    flex-shrink: 0;
+}
+
+/* Status paid - hijau sage yang elegan */
+#list li[data-status='paid']::before,
+#list li:has(:contains('paid'))::before {
+    background-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Status unpaid - amber yang hangat */
+#list li[data-status='unpaid']::before,
+#list li:has(:contains('unpaid'))::before {
+    background-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+/* Tambahkan class untuk JavaScript */
+#list li.paid::before {
+    background-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+#list li.unpaid::before {
+    background-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 520px) {
+    body {
+        padding: 16px;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+    }
+
+    #total {
+        font-size: 20px;
+        padding: 14px 16px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+    }
+
+    #list li {
+        padding: 14px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Dark mode support (opsional) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #0f172a;
+    }
+
+    .container {
+        background-color: #1e293b;
+        border-color: #334155;
+    }
+
+    h1 {
+        color: #f1f5f9;
+        border-bottom-color: #334155;
+    }
+
+    #total {
+        background: #0f172a;
+        border-color: #334155;
+        color: #f1f5f9;
+    }
+
+    button {
+        background-color: #1e293b;
+        border-color: #334155;
+        color: #cbd5e1;
+    }
+
+    button:hover {
+        background-color: #334155;
+        border-color: #475569;
+    }
+
+    #loadBtn {
+        background-color: #334155;
+        color: #f1f5f9;
+    }
+
+    #filterPaid {
+        background-color: #1e293b;
+        border-color: #065f46;
+        color: #6ee7b7;
+    }
+
+    #filterUnpaid {
+        background-color: #1e293b;
+        border-color: #92400e;
+        color: #fcd34d;
+    }
+
+    #list li {
+        background-color: #1e293b;
+        border-color: #334155;
+        color: #e2e8f0;
+    }
+
+    #list li:hover {
+        background-color: #2d3748;
+        border-color: #475569;
+    }
+}
